@@ -1,0 +1,12 @@
+<div class="pokemon-list">
+  <div class="nav-list container">
+    <a *ngIf=pokemonPage.shouldDisplayPrevPage (click)="prevPage()">&laquo; previous page</a> &nbsp;
+    <a *ngIf=pokemonPage.shouldDisplayNextPage (click)="nextPage()">next page &raquo;</a>
+  </div>
+  <div>
+    <div class="pokemon container" *ngFor="let pokemon of pokemonPage.pokemonList">
+      <p class="name">{{pokemon.name | titlecase}}</p>
+      <hr>
+    </div>
+  </div>
+</div>

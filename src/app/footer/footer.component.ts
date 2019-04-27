@@ -3,12 +3,12 @@ import {ConfigService} from '../config.service';
 import {Config} from '../config';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss'],
   providers: [ConfigService]
 })
-export class NavbarComponent implements OnInit {
+export class FooterComponent implements OnInit {
   private config: Config;
 
   constructor(private service: ConfigService) {
@@ -17,4 +17,5 @@ export class NavbarComponent implements OnInit {
   async ngOnInit() {
     this.config = await this.service.fetchConfig();
   }
+
 }

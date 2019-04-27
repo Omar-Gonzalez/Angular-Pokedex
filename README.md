@@ -1,6 +1,10 @@
-# Pokedex
+# Angular Pokedex 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+
+This projects uses the [Public PokeAPI](https://pokeapi.co/) which is nothing short of fantastic
+
+You can visit the [live app here](https://omar-gonzalez.github.io/Angular-Pokedex/)
 
 ## Development server
 

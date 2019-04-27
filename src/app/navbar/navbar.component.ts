@@ -9,7 +9,7 @@ import {Config} from '../config';
   providers: [ConfigService]
 })
 export class NavbarComponent implements OnInit {
-  private config: Config;
+  config: Config;
 
   constructor(private service: ConfigService) {
   }

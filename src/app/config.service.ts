@@ -6,7 +6,7 @@ import {endpoints} from './api.endpoints';
   providedIn: 'root'
 })
 export class ConfigService {
-  private config: Config;
+  config: Config;
 
   constructor() {
   }

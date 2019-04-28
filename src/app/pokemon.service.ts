@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {endpoints} from './api.endpoints';
 import {PokemonPage} from './pokemon-page';
+import {Pokemon} from './pokemon';
+import {EncounterArea} from './encounter-area';
+import {SpecieInfo} from './specie-info';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +35,24 @@ export class PokemonService {
     return this.pokemonPage;
   }
 
-  shouldDisplayPrevPage(): boolean {
-    return false;
+  async fetchPokemonWith(url: string) {
+    const response = await fetch(url);
+    const data = await response.json();
+    const pokemon = new Pokemon(data);
+    return pokemon;
+  }
+
+  async fetchEncounterAreaWith(url: string) {
+    const response = await fetch(url);
+    const data = await response.json();
+    const areas = data.map(area => new EncounterArea(area));
+    return areas;
+  }
+
+  async fetchSpeciesInfoWith(url: string) {
+    const response = await fetch(url);
+    const data = await response.json();
+    const speciesInfo = new SpecieInfo(data);
+    return speciesInfo;
   }
 }

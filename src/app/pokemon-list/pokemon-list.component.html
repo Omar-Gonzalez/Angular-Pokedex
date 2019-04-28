@@ -7,6 +7,7 @@
     <div class="pokemon container" *ngFor="let pokemon of pokemonPage.pokemonList">
       <p class="name">{{pokemon.name | titlecase}}</p>
       <hr>
+      <app-pokemon [url]="pokemon.url"></app-pokemon>
     </div>
   </div>
 </div>

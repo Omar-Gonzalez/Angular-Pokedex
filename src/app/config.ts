@@ -10,6 +10,7 @@ export class Config {
 
   constructor(data: any) {
     this.currentYear = (new Date()).getFullYear();
+    console.log(data.app)
     try {
       this.title = data.app.title;
       this.build = data.app.build;
@@ -20,7 +21,6 @@ export class Config {
       this.legalLegend = data.app['legal-legend'];
     } catch (e) {
       this.title = 'Pokedex';
-      this.build = '';
       this.author = 'Omar González';
       this.authorWebsite = 'https://www.google.com';
       this.sourceLegend = 'Source code';

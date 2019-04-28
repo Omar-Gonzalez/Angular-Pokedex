@@ -1,6 +1,6 @@
 export class Config {
   public title: string;
-  public version: number;
+  public build: string;
   public author: string;
   public authorWebsite: string;
   public sourceLegend: string;
@@ -12,7 +12,7 @@ export class Config {
     this.currentYear = (new Date()).getFullYear();
     try {
       this.title = data.app.title;
-      this.version = data.app.version;
+      this.build = data.app.build;
       this.author = data.app.author;
       this.authorWebsite = data.app['author-website'];
       this.sourceLegend = data.app['source-legend'];
@@ -20,7 +20,7 @@ export class Config {
       this.legalLegend = data.app['legal-legend'];
     } catch (e) {
       this.title = 'Pokedex';
-      this.version = 0;
+      this.build = '';
       this.author = 'Omar González';
       this.authorWebsite = 'https://www.google.com';
       this.sourceLegend = 'Source code';

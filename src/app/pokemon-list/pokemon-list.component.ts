@@ -10,8 +10,22 @@ import {PokemonPage} from '../pokemon-page';
 })
 export class PokemonListComponent implements OnInit {
   pokemonPage: PokemonPage;
+  isShowingDetail: boolean;
+  detailUrl: string;
 
   constructor(private pokemonService: PokemonService) {
+    this.isShowingDetail = false;
+  }
+
+  showDetailWith(url: string) {
+    this.detailUrl = url;
+    this.isShowingDetail = true;
+    window.scrollTo(0, 0);
+  }
+
+  hideDetails() {
+    this.isShowingDetail = false;
+    window.scrollTo(0, 0);
   }
 
   async ngOnInit() {

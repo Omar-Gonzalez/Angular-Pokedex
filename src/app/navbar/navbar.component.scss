@@ -7,5 +7,8 @@
     color:#FFC91A;
     font-family: 'Carter One', cursive;
     text-shadow: -3px 0 #4b6a98, 0 3px #4b6a98, 3px 0 #4b6a98, 0 -3px #4b6a98;
+    @media(max-width: 768px){
+      font-size: 20px;
+    }
   }
 }

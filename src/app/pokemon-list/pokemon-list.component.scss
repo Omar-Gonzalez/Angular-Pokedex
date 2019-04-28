@@ -15,7 +15,10 @@ $main_theme_color: #EF5350;
   .nav-list {
     text-align: center;
     border-radius: 5px;
-    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .pokemon {
@@ -23,17 +26,36 @@ $main_theme_color: #EF5350;
     border-color: $main_theme_color;
     border-width: 0.5px;
     border-style: solid;
-    padding: 10px;
+
+    .details-link {
+      float: right;
+      margin-right: 30px;
+      margin-top: 20px;
+      @media (max-width: 768px){
+        float: right;
+        margin:auto;
+        font-size: 12px;
+        margin-top: 7px;
+        margin-right: 5px;
+      }
+    }
 
     .name {
-      text-align: center;
       color: $main_theme_color;
-      font-size: 35px;
+      font-size: 20px;
       font-family: 'Carter One', cursive;
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
     }
 
-    hr {
-      border-top: 1px solid $main_theme_color;
+    .snippet-frame {
+      @media(max-width: 768px){
+        margin-left: 5px;
+      }
+      margin-left: 20px;
+      display: inline-block;
     }
+
   }
 }

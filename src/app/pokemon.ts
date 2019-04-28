@@ -12,6 +12,7 @@ export class Pokemon {
   locationEncounterUrl: string;
   speciesUrl: string;
   height: string;
+  typesLegend:string;
 
   constructor(data: any) {
     this.name = data.name || 'N/A';
@@ -19,6 +20,9 @@ export class Pokemon {
     this.sprites = data.sprites;
     this.abilities = data.abilities;
     this.types = data.types;
+    this.typesLegend = data.types.map(type => {
+      return type.type.name;
+    }).join(', ');
     this.moves = data.moves;
     this.forms = data.forms;
     this.spriteFrontDefault = data.sprites.front_default;

@@ -1,13 +1,30 @@
 <div class="pokemon-list">
   <div class="nav-list container">
-    <a *ngIf=pokemonPage?.shouldDisplayPrevPage (click)="prevPage()">&laquo; previous page</a> &nbsp;
-    <a *ngIf=pokemonPage?.shouldDisplayNextPage (click)="nextPage()">next page &raquo;</a>
+    <div *ngIf="!isShowingDetail">
+      <a *ngIf=pokemonPage?.shouldDisplayPrevPage (click)="prevPage()">&laquo; previous page</a> &nbsp;
+      <a *ngIf=pokemonPage?.shouldDisplayNextPage (click)="nextPage()">next page &raquo;</a>
+    </div>
+    <div *ngIf="isShowingDetail">
+      <a (click)="hideDetails()">back &laquo;</a>
+    </div>
   </div>
-  <div>
+  <div *ngIf="isShowingDetail">
+    <div class="pokemon container">
+      <app-pokemon [url]="detailUrl"></app-pokemon>
+    </div>
+  </div>
+  <div *ngIf="!isShowingDetail">
     <div class="pokemon container" *ngFor="let pokemon of pokemonPage?.pokemonList">
-      <p class="name">{{pokemon?.name | titlecase}}</p>
-      <hr>
-      <app-pokemon [url]="pokemon?.url"></app-pokemon>
+      <div class="snippet-frame">
+        <p class="name">&#x2606;</p>
+      </div>
+      <div class="snippet-frame">
+        <p class="name">{{pokemon?.name | titlecase}}</p>
+      </div>
+      <div class="snippet-frame">
+        <app-pokemon-snippet [url]="pokemon?.url"></app-pokemon-snippet>
+      </div>
+      <a class="details-link" (click)="showDetailWith(pokemon?.url)">details &raquo;</a>
     </div>
   </div>
 </div>

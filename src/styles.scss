@@ -24,3 +24,13 @@ body {
     }
   }
 }
+
+.text-link{
+  border-style: none;
+  padding: auto;
+  color: #EF5350;
+  &:hover{
+    color: #c44542;
+    background-color: transparent;
+  }
+}

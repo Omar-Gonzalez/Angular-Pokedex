@@ -10,23 +10,13 @@ export class Config {
 
   constructor(data: any) {
     this.currentYear = (new Date()).getFullYear();
-    console.log(data.app)
-    try {
-      this.title = data.app.title;
-      this.build = data.app.build;
-      this.author = data.app.author;
-      this.authorWebsite = data.app['author-website'];
-      this.sourceLegend = data.app['source-legend'];
-      this.sourceUrl = data.app['source-url'];
-      this.legalLegend = data.app['legal-legend'];
-    } catch (e) {
-      this.title = 'Pokedex';
-      this.author = 'Omar González';
-      this.authorWebsite = 'https://www.google.com';
-      this.sourceLegend = 'Source code';
-      this.sourceUrl = 'https://www.google.com';
-      this.legalLegend = 'Legal';
-    }
+    this.title = data.app.title;
+    this.build = data.app.build;
+    this.author = data.app.author;
+    this.authorWebsite = data.app['author-website'];
+    this.sourceLegend = data.app['source-legend'];
+    this.sourceUrl = data.app['source-url'];
+    this.legalLegend = data.app['legal-legend'];
   }
 }
 

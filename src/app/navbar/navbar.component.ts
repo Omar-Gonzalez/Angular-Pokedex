@@ -1,20 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {ConfigService} from '../config.service';
+import {Component, OnInit, Input} from '@angular/core';
 import {Config} from '../config';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  providers: [ConfigService]
+  providers: []
 })
 export class NavbarComponent implements OnInit {
-  config: Config;
+  @Input()  config: Config;
 
-  constructor(private service: ConfigService) {
+  constructor() {
   }
 
   async ngOnInit() {
-    this.config = await this.service.fetchConfig();
   }
 }

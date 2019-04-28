@@ -8,10 +8,10 @@ export class SpecieInfo {
   generation: string;
 
   constructor(data: any) {
-    this.shape = data.shape.name;
-    this.color = data.color.name;
+    this.shape = data.shape.name || 'N/A';
+    this.color = data.color.name || 'N/A';
     this.captureRate = `${data.capture_rate}%`;
-    this.generation = data.generation.name;
+    this.generation = data.generation.name || 'N/A';
     this.flavorText = data.flavor_text_entries.filter(entry => {
       if (entry.language.name === 'en') {
         return entry.flavor_text;

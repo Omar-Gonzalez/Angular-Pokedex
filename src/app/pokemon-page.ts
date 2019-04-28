@@ -7,23 +7,19 @@ export class PokemonPage {
   shouldDisplayNextPage: boolean;
 
   constructor(data: any) {
-    try {
-      this.count = data.count;
-      this.prevPageUrl = data.previous;
-      this.nextPageUrl = data.next;
-      this.pokemonList = data.results.map(pokemon => pokemon);
-      if (data.previous) {
-        this.shouldDisplayPrevPage = true;
-      } else {
-        this.shouldDisplayPrevPage = false;
-      }
-      if (data.next) {
-        this.shouldDisplayNextPage = true;
-      } else {
-        this.shouldDisplayNextPage = false;
-      }
-    } catch (e) {
-      alert('Error fetching a pokemon resource page');
+    this.count = data.count;
+    this.prevPageUrl = data.previous;
+    this.nextPageUrl = data.next;
+    this.pokemonList = data.results;
+    if (data.previous) {
+      this.shouldDisplayPrevPage = true;
+    } else {
+      this.shouldDisplayPrevPage = false;
+    }
+    if (data.next) {
+      this.shouldDisplayNextPage = true;
+    } else {
+      this.shouldDisplayNextPage = false;
     }
   }
 }

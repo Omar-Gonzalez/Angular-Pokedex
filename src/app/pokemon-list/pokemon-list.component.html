@@ -16,7 +16,7 @@
   <div *ngIf="!isShowingDetail">
     <div class="pokemon container" *ngFor="let pokemon of pokemonPage?.pokemonList">
       <div class="snippet-frame">
-        <p class="name">&#x2606;</p>
+        <p class="name fav-icon" (click)="setFavoriteWith(pokemon?.name)" [innerHTML]="pokemon?.favIcon"></p>
       </div>
       <div class="snippet-frame">
         <p class="name">{{pokemon?.name | titlecase}}</p>

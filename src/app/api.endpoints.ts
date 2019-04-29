@@ -1,4 +1,4 @@
 export const endpoints = {
   config: 'https://raw.githubusercontent.com/Omar-Gonzalez/config.payloads/master/pokedex.config.json',
-  pokemonList: 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20',
+  pokemonList: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20',
 };

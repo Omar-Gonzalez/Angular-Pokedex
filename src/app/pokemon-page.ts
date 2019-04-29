@@ -7,7 +7,7 @@ export class PokemonPage {
   shouldDisplayNextPage: boolean;
 
   constructor(data: any) {
-    const favorites: [string] = localStorage.getItem('favorites') !== null ? localStorage.getItem('favorites').split(',') : [];
+    const favorites: string[] = localStorage.getItem('favorites') !== null ? localStorage.getItem('favorites').split(',') : [];
     this.count = data.count;
     this.prevPageUrl = data.previous;
     this.nextPageUrl = data.next;

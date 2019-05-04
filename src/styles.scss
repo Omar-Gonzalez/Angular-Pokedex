@@ -34,3 +34,89 @@ body {
     background-color: transparent;
   }
 }
+
+$main_theme_color: #EF5350;
+
+.pokemon-list {
+  .container {
+    @media (max-width: 700px) {
+      width: calc(100% - 40px);
+    }
+    width: calc(100% - 150px);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+    margin-top: 10px;
+
+    input{
+      padding: 9px;
+      color:$main_theme_color;
+      background-color: transparent;
+      border-radius: 3px;
+      box-shadow: none;
+      outline: none !important;
+      border: 1px solid $main_theme_color;
+    }
+
+  }
+
+  .nav-list {
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .pokemon {
+    border-radius: 5px;
+    border-color: $main_theme_color;
+    border-width: 0.5px;
+    border-style: solid;
+
+    .details-link {
+      float: right;
+      margin-right: 30px;
+      margin-top: 25px;
+      @media (max-width: 768px){
+        float: right;
+        margin:auto;
+        font-size: 12px;
+        margin-top: 7px;
+        margin-right: 5px;
+      }
+    }
+
+    .name {
+      color: $main_theme_color;
+      font-size: 20px;
+      font-family: 'Carter One', cursive;
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
+    }
+
+    .fav-icon{
+      cursor: pointer;
+      color: #EF5350;
+      border-style: solid;
+      border-width: 1px;
+      background-color:whitesmoke;
+      color:#EF5350;
+      padding: 5px;
+      border-radius: 3px;
+      &:hover{
+        background-color: #EF5350;
+        color:whitesmoke!important;;
+      }
+    }
+
+    .snippet-frame {
+      @media(max-width: 768px){
+        margin-left: 5px;
+      }
+      margin-left: 20px;
+      display: inline-block;
+    }
+
+  }
+}

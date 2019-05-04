@@ -55,4 +55,11 @@ export class PokemonService {
     const speciesInfo = new SpecieInfo(data);
     return speciesInfo;
   }
+
+  async fetchPokemonWithName(name: string) {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}/`);
+    const data = await response.json();
+    const pokemon = new Pokemon(data);
+    return pokemon;
+  }
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PokemonService} from '../pokemon.service';
 import {PokemonPage} from '../pokemon-page';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -10,12 +11,9 @@ import {PokemonPage} from '../pokemon-page';
 })
 export class PokemonListComponent implements OnInit {
   pokemonPage: PokemonPage;
-  isShowingDetail: boolean;
-  detailUrl: string;
   pokemonList: [any];
 
-  constructor(private pokemonService: PokemonService) {
-    this.isShowingDetail = false;
+  constructor(private pokemonService: PokemonService, private router: Router) {
   }
 
   async ngOnInit() {
@@ -30,15 +28,12 @@ export class PokemonListComponent implements OnInit {
     this.pokemonPage = await this.pokemonService.fetchNextPage();
   }
 
-  showDetailWith(url: string) {
-    this.detailUrl = url;
-    this.isShowingDetail = true;
-    window.scrollTo(0, 0);
+  showDetailWith(name: string) {
+    this.router.navigate(['pokemon/', name]);
   }
 
-  hideDetails() {
-    this.isShowingDetail = false;
-    window.scrollTo(0, 0);
+  searchWith(name: string) {
+    this.router.navigate(['pokemon', name]);
   }
 
   setFavoriteWith(name: string) {

@@ -2,7 +2,7 @@ export class PokemonPage {
   count: number;
   prevPageUrl: string;
   nextPageUrl: string;
-  pokemonList: [any];
+  pokemonList: any[];
   shouldDisplayPrevPage: boolean;
   shouldDisplayNextPage: boolean;
 

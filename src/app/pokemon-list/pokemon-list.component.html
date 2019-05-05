@@ -1,10 +1,12 @@
 <div class="pokemon-list">
   <div class="nav-list container">
-      <a *ngIf=pokemonPage?.shouldDisplayPrevPage (click)="prevPage()">&laquo; previous page</a>&nbsp; &nbsp;
-      <a *ngIf=pokemonPage?.shouldDisplayNextPage (click)="nextPage()">next page &raquo;</a>&nbsp;
-  </div>
-  <div class="nav-list container">
-    <input #searchString type="text" placeholder="Search a pokemon">&nbsp; <a (click)="searchWith(searchString.value)">search &raquo;</a>
+    <button class="btn" *ngIf=pokemonPage?.shouldDisplayPrevPage (click)="fetchPage(pokemonPage.prevPageUrl)">&laquo; previous page</button> &nbsp;
+    <button class="btn" *ngIf=pokemonPage?.shouldDisplayNextPage (click)="fetchPage(pokemonPage.nextPageUrl)">next page &raquo;
+    </button>
+    <hr>
+    <input #searchString type="text" placeholder="Search a pokemon" (keyup)="handleIptKeyup($event)">
+    <button class="btn" (click)="searchWithName()">search &raquo;</button>
+    <div *ngIf="alert.visible" class="alert">{{alert.msg}} <button (click)="hideAlert()" class="btn">ok</button></div>
   </div>
   <div>
     <div class="pokemon container" *ngFor="let pokemon of pokemonPage?.pokemonList">
@@ -17,7 +19,7 @@
       <div class="snippet-frame">
         <app-pokemon-snippet [url]="pokemon?.url"></app-pokemon-snippet>
       </div>
-      <a class="details-link" (click)="showDetailWith(pokemon?.name)">details &raquo;</a>
+      <button class="details-link btn" (click)="showDetailWith(pokemon?.name)">details &raquo;</button>
     </div>
   </div>
 </div>

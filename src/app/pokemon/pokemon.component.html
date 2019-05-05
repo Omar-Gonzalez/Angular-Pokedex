@@ -1,6 +1,7 @@
-<div class="pokemon-list">
+<app-page-not-found *ngIf="!pokemonWasFound"></app-page-not-found>
+<div class="pokemon-list" *ngIf="pokemonWasFound">
   <div class="nav-list container">
-    <a routerLink="">&laquo; back to list</a>&nbsp; &nbsp;
+    <button class="btn" routerLink="">&laquo; back to list</button>&nbsp; &nbsp;
   </div>
   <div class="sprites">
     <img *ngIf="pokemon?.spriteFrontDefault" src="{{pokemon?.spriteFrontDefault}}" alt="{{pokemon?.name}}">

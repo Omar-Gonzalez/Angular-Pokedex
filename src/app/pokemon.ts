@@ -1,18 +1,18 @@
 export class Pokemon {
-  sprites: [any];
+  sprites: any[];
   spriteFrontDefault: string;
   spriteBackDefault: string;
   spriteFrontFemale: string;
   spriteBackFemale: string;
-  abilities: [any];
-  moves: [any];
-  types: [any];
-  forms: [any];
+  abilities: any[];
+  moves: any[];
+  types: any[];
+  forms: any[];
   name: string;
   locationEncounterUrl: string;
   speciesUrl: string;
   height: string;
-  typesLegend:string;
+  typesLegend: string;
 
   constructor(data: any) {
     this.name = data.name || 'N/A';

@@ -1,55 +1,59 @@
-<app-page-not-found *ngIf="!pokemonWasFound"></app-page-not-found>
-<div class="pokemon-list" *ngIf="pokemonWasFound">
+<div class="pokemon-list">
   <div class="nav-list container">
     <button class="btn" routerLink="">&laquo; back to list</button>&nbsp; &nbsp;
+    <div class="alert" *ngIf="!pokemonWasFound">404 We couldn't fetch the requested pokemon information, please try
+      again later.
+    </div>
   </div>
-  <div class="sprites">
-    <img *ngIf="pokemon?.spriteFrontDefault" src="{{pokemon?.spriteFrontDefault}}" alt="{{pokemon?.name}}">
-    <img *ngIf="pokemon?.spriteBackDefault" src="{{pokemon?.spriteBackDefault}}" alt="{{pokemon?.name}}">
-    <img *ngIf="pokemon?.spriteFrontFemale" src="{{pokemon?.spriteBackFemale}}" alt="{{pokemon?.name}}">
-    <img *ngIf="pokemon?.spriteBackFemale" src="{{pokemon?.spriteFrontFemale}}" alt="{{pokemon?.name}}">
-    <br>
-  </div>
-  <div class="block">
-    <div class="frame">
-      <p>{{pokemon?.name | titlecase}} Species Info</p>
-      <div class="flavor-text">
-        {{specieInfo?.flavorText}}
+  <div *ngIf="pokemonWasFound">
+    <div class="sprites">
+      <img *ngIf="pokemon?.spriteFrontDefault" src="{{pokemon?.spriteFrontDefault}}" alt="{{pokemon?.name}}">
+      <img *ngIf="pokemon?.spriteBackDefault" src="{{pokemon?.spriteBackDefault}}" alt="{{pokemon?.name}}">
+      <img *ngIf="pokemon?.spriteFrontFemale" src="{{pokemon?.spriteBackFemale}}" alt="{{pokemon?.name}}">
+      <img *ngIf="pokemon?.spriteBackFemale" src="{{pokemon?.spriteFrontFemale}}" alt="{{pokemon?.name}}">
+      <br>
+    </div>
+    <div class="block">
+      <div class="frame">
+        <p>{{pokemon?.name | titlecase}} Species Info</p>
+        <div class="flavor-text">
+          {{specieInfo?.flavorText}}
+        </div>
+        <ul>
+          <li>Genus: <strong>{{specieInfo?.genus | titlecase}}</strong>
+          <li>Generation: <strong>{{specieInfo?.generation | titlecase}}</strong></li>
+          <li>Shape: <strong>{{specieInfo?.shape | titlecase}}</strong></li>
+          <li>Height: <strong>{{pokemon?.height}}</strong></li>
+          <li>Color: <strong>{{specieInfo?.color | titlecase}}</strong></li>
+          <li>Capture Rate: <strong>{{specieInfo?.captureRate}}</strong></li>
+          <li>Egg groups: <strong>{{specieInfo?.eggGroup | titlecase}}</strong></li>
+        </ul>
+        <p>{{pokemon?.name | titlecase}} Type</p>
+        <ul>
+          <li *ngFor="let type of pokemon?.types">{{type?.type?.name | titlecase}}</li>
+        </ul>
+        <p>{{pokemon?.name | titlecase}} Abilities</p>
+        <ul>
+          <li *ngFor="let ability of pokemon?.abilities">{{ability?.ability?.name | titlecase}}</li>
+        </ul>
       </div>
-      <ul>
-        <li>Genus: <strong>{{specieInfo?.genus | titlecase}}</strong>
-        <li>Generation: <strong>{{specieInfo?.generation | titlecase}}</strong></li>
-        <li>Shape: <strong>{{specieInfo?.shape | titlecase}}</strong></li>
-        <li>Height: <strong>{{pokemon?.height}}</strong></li>
-        <li>Color: <strong>{{specieInfo?.color | titlecase}}</strong></li>
-        <li>Capture Rate: <strong>{{specieInfo?.captureRate}}</strong></li>
-        <li>Egg groups: <strong>{{specieInfo?.eggGroup | titlecase}}</strong></li>
-      </ul>
-      <p>{{pokemon?.name | titlecase}} Type</p>
-      <ul>
-        <li *ngFor="let type of pokemon?.types">{{type?.type?.name | titlecase}}</li>
-      </ul>
-      <p>{{pokemon?.name | titlecase}} Abilities</p>
-      <ul>
-        <li *ngFor="let ability of pokemon?.abilities">{{ability?.ability?.name | titlecase}}</li>
-      </ul>
-    </div>
-    <div class="frame">
-      <p>{{pokemon?.name | titlecase}} Moves</p>
-      <ul>
-        <li *ngFor="let move of pokemon?.moves">{{move?.move?.name | titlecase}}</li>
-      </ul>
-    </div>
-    <div class="frame">
-      <p>Location Area Encounters</p>
-      <ul>
-        <li *ngFor="let area of encounterAreas">{{area?.name | titlecase}}
-          <br>
-          <mark>Encounter chance {{area?.chance}}%</mark>
-          <br>
-          <mark>Ecounter method {{area?.method}}</mark>
-        </li>
-      </ul>
+      <div class="frame">
+        <p>{{pokemon?.name | titlecase}} Moves</p>
+        <ul>
+          <li *ngFor="let move of pokemon?.moves">{{move?.move?.name | titlecase}}</li>
+        </ul>
+      </div>
+      <div class="frame">
+        <p>Location Area Encounters</p>
+        <ul>
+          <li *ngFor="let area of encounterAreas">{{area?.name | titlecase}}
+            <br>
+            <mark>Encounter chance {{area?.chance}}%</mark>
+            <br>
+            <mark>Ecounter method {{area?.method}}</mark>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

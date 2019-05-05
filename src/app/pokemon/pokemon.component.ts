@@ -18,7 +18,7 @@ export class PokemonComponent implements OnInit {
   pokemonWasFound: boolean;
 
   constructor(private pokemonService: PokemonService, private activatedRoute: ActivatedRoute) {
-    this.pokemonWasFound = false;
+    this.pokemonWasFound = true;
     this.activatedRoute.queryParams.subscribe(params => {
       if (params.name !== undefined) {
         this.loadPokemonWith(params.name, null);
@@ -40,8 +40,8 @@ export class PokemonComponent implements OnInit {
     if (pokemonId) {
       pokemon = await this.pokemonService.fetchPokemonWithAny(pokemonId);
     }
-    if (pokemon !== 404) {
-      this.pokemonWasFound = true;
+    if (pokemon === 404) {
+      this.pokemonWasFound = false;
     }
     // @ts-ignore
     this.pokemon = pokemon;

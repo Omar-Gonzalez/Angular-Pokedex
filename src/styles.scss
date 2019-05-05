@@ -68,7 +68,7 @@ $main_theme_color: #EF5350;
       border-radius: 5px;
       box-shadow: none;
       outline: none !important;
-      border: 1px solid $main_theme_color;
+      border: 0px solid $main_theme_color;
     }
 
   }
@@ -79,12 +79,50 @@ $main_theme_color: #EF5350;
     padding-top: 20px;
     padding-bottom: 20px;
 
-    .btn{
+    @media (max-width: 768px){
+      padding-bottom: 40px;
+    }
+
+    .auto-complete {
+      position: absolute;
+      background-color: whitesmoke;
+      border-style: solid;
+      border-color: $theme_primary_color;
+      border-width: 1px;
+      border-radius: 5px;
+      width: 200px;
+      left:calc(10%);
+      margin-top: -30px;
+
+      @media (max-width: 768px) {
+        margin-top: 3px;
+        left:calc(50% - 100px);
+      }
+
+      .search-result {
+        font-size: 13px;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: $theme_primary_color;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        cursor: pointer;
+        padding: 3px;
+        color:$theme_primary_color;
+
+        &:hover {
+          background-color: $theme_primary_color;
+          color: white;
+        }
+      }
+    }
+
+    .btn {
       margin-left: 3px;
       margin-right: 3px;
     }
 
-    input{
+    input {
       margin-left: 6px;
       margin-right: 6px;
     }
@@ -151,18 +189,24 @@ $main_theme_color: #EF5350;
 
     .fav-icon {
       cursor: pointer;
-      color: #EF5350;
+      color: $theme_primary_color;
       border-style: solid;
       border-width: 1px;
       background-color: whitesmoke;
-      color: #EF5350;
+      color: $theme_primary_color;
       padding: 5px;
       border-radius: 3px;
 
       &:hover {
-        background-color: #EF5350;
-        color: whitesmoke !important;;
+        background-color: white;
+        border-style: solid;
+        border-width: 1px;
       }
+    }
+
+    .fav-icon.favorite{
+      background-color: $theme_primary_color;
+      color:whitesmoke;
     }
 
     .snippet-frame {

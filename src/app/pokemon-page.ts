@@ -12,11 +12,11 @@ export class PokemonPage {
     this.prevPageUrl = data.previous;
     this.nextPageUrl = data.next;
     this.pokemonList = data.results.map(pokemon => {
-      const favIcon: string = favorites.includes(pokemon.name) ? '&#x2605;' : '&#x2606;';
+      const isFavorite: string = favorites.includes(pokemon.name) ? 'favorite' : '';
       return {
         name: pokemon.name,
         url: pokemon.url,
-        favIcon: `${favIcon}`
+        isFavorite
       };
     });
     if (data.previous) {

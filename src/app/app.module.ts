@@ -13,8 +13,8 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   {path: '', component: PokemonListComponent},
-  {path: 'pokemon/:name', component: PokemonComponent},
-{path: '**', component: PageNotFoundComponent}
+  {path: 'pokemon', component: PokemonComponent, pathMatch: 'full'},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

@@ -19,16 +19,27 @@ export class PokemonComponent implements OnInit {
 
   constructor(private pokemonService: PokemonService, private activatedRoute: ActivatedRoute) {
     this.pokemonWasFound = false;
-  }
-
-  async ngOnInit() {
-    this.activatedRoute.params.subscribe(param => {
-      this.loadPokemonWithName(param.name);
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params.name !== undefined) {
+        this.loadPokemonWith(params.name, null);
+      }
+      if (params.pokemonId !== undefined) {
+        this.loadPokemonWith(null, params.pokemonId);
+      }
     });
   }
 
-  async loadPokemonWithName(name: string) {
-    const pokemon = await this.pokemonService.fetchPokemonWithName(name);
+  async ngOnInit() {
+  }
+
+  async loadPokemonWith(name: string, pokemonId: number) {
+    let pokemon;
+    if (name) {
+      pokemon = await this.pokemonService.fetchPokemonWithAny(name);
+    }
+    if (pokemonId) {
+      pokemon = await this.pokemonService.fetchPokemonWithAny(pokemonId);
+    }
     if (pokemon !== 404) {
       this.pokemonWasFound = true;
     }

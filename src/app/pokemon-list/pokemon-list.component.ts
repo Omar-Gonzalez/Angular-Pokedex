@@ -1,8 +1,10 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {PokemonService} from '../pokemon.service';
 import {PokemonPage} from '../pokemon-page';
 import {Router} from '@angular/router';
 import {endpoints} from '../api.endpoints';
+import {PokemonList} from '../pokemon-list';
+import {PokemonItem} from '../pokemon-list';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -11,20 +13,17 @@ import {endpoints} from '../api.endpoints';
   providers: [PokemonService]
 })
 export class PokemonListComponent implements OnInit {
-  @ViewChild('searchString') searchString: ElementRef;
+  @ViewChild('searchString') searchString: string;
   pokemonPage: PokemonPage;
-  pokemonList: any[];
-  alert: any;
+  pokemonList: PokemonList;
+  searchResults: PokemonItem[];
 
   constructor(private pokemonService: PokemonService, private router: Router) {
-    this.alert = {
-      visible: false,
-      msg: ''
-    };
   }
 
   async ngOnInit() {
     this.pokemonPage = await this.pokemonService.fetchPage(endpoints.pokemonList);
+    this.pokemonList = await this.pokemonService.fetchPokemonList();
   }
 
   async fetchPage(url: string) {
@@ -32,34 +31,29 @@ export class PokemonListComponent implements OnInit {
   }
 
   showDetailWith(name: string) {
-    this.router.navigate(['pokemon', name]);
+    this.router.navigate(['pokemon/'], {
+      queryParams: {
+        name,
+      }
+    });
   }
 
-  hideAlert() {
-    this.alert.visible = false;
-    this.searchString.nativeElement.value = '';
+  showDetailWithId(pokemonId: number) {
+    this.router.navigate(['pokemon/'], {
+      queryParams: {
+        pokemonId,
+      }
+    });
   }
 
-  handleIptKeyup(e) {
-    if (e.key === 'Enter') {
-      this.searchWithName();
-    }
-  }
-
-  async searchWithName() {
-    const name = this.searchString.nativeElement.value;
+  search() {
+    // @ts-ignore
+    const name = this.searchString.nativeElement.value.toLowerCase();
     if (name.length < 1) {
-      this.alert.visible = true;
-      this.alert.msg = 'Please type a pokemon name before searching';
+      this.searchResults = [];
       return;
     }
-    const wasFound = await this.pokemonService.fetchPokemonWithName(name);
-    if (wasFound === 404) {
-      this.alert.visible = true;
-      this.alert.msg = `I couldn't find any pokemon with given name ${name}, please try again with another name`;
-      return;
-    }
-    this.router.navigate(['pokemon', name]);
+    this.searchResults = this.pokemonList.pokemons.filter(pokemon => pokemon.name.includes(name.toLowerCase()));
   }
 
   setFavoriteWith(name: string) {
@@ -74,7 +68,7 @@ export class PokemonListComponent implements OnInit {
     // @ts-ignore
     this.pokemonPage.pokemonList = this.pokemonPage.pokemonList.map(pokemon => {
       if (pokemon.name === name) {
-        pokemon.favIcon = pokemon.favIcon === '&#x2605;' ? '&#x2606;' : '&#x2605;';
+        pokemon.isFavorite = pokemon.isFavorite === 'favorite' ? '' : 'favorite';
       }
       return pokemon;
     });

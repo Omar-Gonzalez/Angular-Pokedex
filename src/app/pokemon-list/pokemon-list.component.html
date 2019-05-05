@@ -1,17 +1,19 @@
 <div class="pokemon-list">
   <div class="nav-list container">
-    <button class="btn" *ngIf=pokemonPage?.shouldDisplayPrevPage (click)="fetchPage(pokemonPage.prevPageUrl)">&laquo; previous page</button> &nbsp;
+    <button class="btn" *ngIf=pokemonPage?.shouldDisplayPrevPage (click)="fetchPage(pokemonPage.prevPageUrl)">&laquo; previous page
+    </button> &nbsp;
     <button class="btn" *ngIf=pokemonPage?.shouldDisplayNextPage (click)="fetchPage(pokemonPage.nextPageUrl)">next page &raquo;
     </button>
     <hr>
-    <input #searchString type="text" placeholder="Search a pokemon" (keyup)="handleIptKeyup($event)">
-    <button class="btn" (click)="searchWithName()">search &raquo;</button>
-    <div *ngIf="alert.visible" class="alert">{{alert.msg}} <button (click)="hideAlert()" class="btn">ok</button></div>
+    <div class="auto-complete">
+      <input #searchString type="text" placeholder="Search a pokemon" (keyup)="search()">
+      <div *ngFor="let pokemon of searchResults" (click)="showDetailWithId(pokemon.pokemonId)" class="search-result">{{pokemon.name}}</div>
+    </div>
   </div>
   <div>
     <div class="pokemon container" *ngFor="let pokemon of pokemonPage?.pokemonList">
       <div class="snippet-frame">
-        <p class="name fav-icon" (click)="setFavoriteWith(pokemon?.name)" [innerHTML]="pokemon?.favIcon"></p>
+        <p class="name fav-icon {{pokemon?.isFavorite}}" (click)="setFavoriteWith(pokemon?.name)">&#x2605;</p>
       </div>
       <div class="snippet-frame">
         <p class="name">{{pokemon?.name | titlecase}}</p>

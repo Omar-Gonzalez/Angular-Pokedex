@@ -18,5 +18,4 @@ export class PokemonSnippetComponent implements OnInit {
   async ngOnInit() {
     this.pokemon = await this.pokemonService.fetchPokemonWith(this.url);
   }
-
 }

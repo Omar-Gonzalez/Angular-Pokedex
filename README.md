@@ -1,10 +1,17 @@
-# Angular Pokedex 
+# [Angular Pokedex](https://pokedex-388f1.firebaseapp.com/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
 This projects uses the [Public PokeAPI](https://pokeapi.co/) which is nothing short of fantastic
 
-You can visit the [live app here](https://omar-gonzalez.github.io/Angular-Pokedex/)
+You can visit the [live app here](https://pokedex-388f1.firebaseapp.com/) 
+
+## Features
+
+- Save your favorite pokemons in local storage
+- Comprehensive search 
+- Full pokemon detail page 
+- Responsive design
 
 ## Development server
 
